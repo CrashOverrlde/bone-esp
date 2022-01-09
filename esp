@@ -14,7 +14,7 @@ _G.Sensitivity = 0
 _G.CircleSides = 64
 _G.CircleColor = Color3.fromRGB(255, 255, 255)
 _G.CircleTransparency = 0.7
-_G.CircleRadius = 200 
+_G.CircleRadius = 90 
 _G.CircleFilled = false
 _G.CircleVisible = false 
 _G.CircleThickness = 2 
@@ -98,57 +98,6 @@ RunService.RenderStepped:Connect(function()
 		TweenService:Create(Camera, TweenInfo.new(_G.Sensitivity, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {CFrame = CFrame.new(Camera.CFrame.Position, GetClosestPlayer().Character[_G.AimPart].Position)}):Play()
 	end
 end)
-
-local HoldClick = true
-local Hotkey = 'c' 
-local HotkeyToggle = true
-
-local Players = game:GetService('Players')
-local RunService = game:GetService('RunService')
-
-local LocalPlayer = Players.LocalPlayer
-local Mouse = LocalPlayer:GetMouse()
-
-local Toggle = (Hotkey ~= '')
-local CurrentlyPressed = false
-
-Mouse.KeyDown:Connect(function(key)
-	if HotkeyToggle == true and key == Hotkey then
-		Toggle = not Toggle
-	elseif 
-		key == Hotkey then
-		Toggle = true
-	end
-end)
-
-Mouse.KeyUp:Connect(function(key)
-	if HotkeyToggle ~= true and key == Hotkey then
-		Toggle = false
-	end
-end)
-
-RunService.RenderStepped:Connect(function()
-	if Toggle then
-		if Mouse.Target then
-			if Mouse.Target.Parent:FindFirstChild('Humanoid') then
-				if HoldClick then
-					if not CurrentlyPressed then
-						CurrentlyPressed = true
-						mouse1press()
-					end
-				else
-					mouse1click()
-				end
-			else
-				if HoldClick then
-					CurrentlyPressed = false
-					mouse1release()
-				end
-			end
-		end
-	end
-end)
-
 
 local FJEWIFi93284juIJVEFHWUOFYE = Instance.new("ScreenGui")
 local L1 = Instance.new("TextLabel")
@@ -963,17 +912,17 @@ while wait(1.5) do
 						v.Transparency = 0.5
 					end
 				end
-				
+
 				local amount = 0
 				local players = v.Team:GetPlayers()
-				
+
 				delay(4, function() 
 					if v ~= game.Players.LocalPlayer and v.Character ~= nil and game.Players.LocalPlayer.CameraMode == Enum.CameraMode.Classic then 
 						repeat wait() until v.Character 
 						repeat wait() until v.Character:FindFirstChild("HumanoidRootPart") ~= nil
 						if v.Team == game.Players.LocalPlayer.Team then
 							--print("friend")
-							
+
 							v.Character.UpperTorso.Color = Color3.fromRGB(0, 255, 51)
 							v.Character:FindFirstChild("LeftHand").Color = Color3.fromRGB(0, 255, 51)
 							v.Character:FindFirstChild("LeftFoot").Color = Color3.fromRGB(0, 255, 51)
@@ -1013,7 +962,7 @@ while wait(1.5) do
 						else
 							if v.Team ~= game.Players.LocalPlayer.Team then
 								--print("friend2")
-								
+
 								v.Character.UpperTorso.Color = Color3.fromRGB(255, 0, 234)
 								v.Character:FindFirstChild("LeftHand").Color = Color3.fromRGB(255, 0, 234)
 								v.Character:FindFirstChild("LeftFoot").Color = Color3.fromRGB(255, 0, 234)
@@ -1422,7 +1371,7 @@ while wait(1.5) do
 								v.Character:WaitForChild("Box").ImageLabel.UIStroke.Color = Color3.fromRGB(190, 116, 255)
 							end)
 						end
-						
+
 						if v.Team == game.Players.LocalPlayer.Team and v.Character.UpperTorso.Color == Color3.fromRGB(0, 255, 51) then
 							print("done")
 							break
